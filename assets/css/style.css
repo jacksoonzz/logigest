@@ -1,0 +1,118 @@
+
+/* Configuração geral */
+body {
+    margin: 0;
+    background-color: #f5f7fb;
+    font-family: Arial, sans-serif;
+}
+
+.sistema {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Menu lateral */
+.menu-lateral {
+    width: 250px;
+    background-color: #14263f;
+    color: white;
+    padding: 30px 20px;
+    flex-shrink: 0;
+}
+
+.logo h2 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.logo p {
+    font-size: 12px;
+    color: #b7c3d4;
+}
+
+.navegacao {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 35px;
+}
+
+.navegacao a,
+.navegacao span {
+    color: #c9d4e3;
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+}
+
+.navegacao .ativo {
+    background-color: #2563eb;
+    color: white;
+}
+
+.navegacao span {
+    opacity: 0.65;
+}
+
+/* Conteúdo principal */
+.conteudo {
+    flex: 1;
+    min-width: 0;
+    padding: 35px;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.cabecalho h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.cabecalho p,
+.painel p {
+    color: #64748b;
+}
+
+/* Cartões e tabelas */
+.resumo,
+.painel {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+}
+
+.resumo {
+    padding: 12px;
+}
+
+.resumo p {
+    color: #64748b;
+}
+
+.resumo h2 {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.resumo small {
+    color: #94a3b8;
+}
+
+/* Adaptação para telas menores */
+@media (max-width: 768px) {
+    .sistema {
+        flex-direction: column;
+    }
+
+    .menu-lateral {
+        width: 100%;
+    }
+
+    .conteudo {
+        padding: 20px;
+    }
+}
