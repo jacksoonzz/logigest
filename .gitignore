@@ -1,0 +1,11 @@
+
+# Configuracoes locais do banco de dados
+/config/conexao.php
+
+# Arquivos de ambiente
+.env
+
+# Arquivos temporarios
+*.log
+.DS_Store
+Thumbs.db
