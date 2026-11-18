@@ -20,8 +20,17 @@ $paginaAtual = basename($_SERVER['SCRIPT_NAME']);
             Produtos
         </a>
 
-        <span>Endereços</span>
-        <span>Transportadores</span>
+        
+        <a href="enderecos.php"
+        class="<?= $paginaAtual === 'enderecos.php' ? 'ativo' : '' ?>">
+            Endereços
+        </a>
+
+        
+        <a href="transportadores.php"
+        class="<?= $paginaAtual === 'transportadores.php' ? 'ativo' : '' ?>">
+            Transportadores
+        </a>
         <span>Fretes</span>
         <span>Relatórios</span>
     </nav>
