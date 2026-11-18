@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/11/2026 às 20:12
+-- Tempo de geração: 18/11/2026 às 19:32
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -44,6 +44,42 @@ CREATE TABLE IF NOT EXISTS `enderecos` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `fretes`
+--
+
+CREATE TABLE IF NOT EXISTS `fretes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `transportador_id` int(11) NOT NULL,
+  `origem_id` int(11) NOT NULL,
+  `destino_id` int(11) NOT NULL,
+  `data_frete` date NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'Criado',
+  `criado_em` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `transportador_id` (`transportador_id`),
+  KEY `origem_id` (`origem_id`),
+  KEY `destino_id` (`destino_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `frete_produtos`
+--
+
+CREATE TABLE IF NOT EXISTS `frete_produtos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `frete_id` int(11) NOT NULL,
+  `produto_id` int(11) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unico_produto_frete` (`frete_id`,`produto_id`),
+  KEY `produto_id` (`produto_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `produtos`
 --
 
@@ -73,6 +109,25 @@ CREATE TABLE IF NOT EXISTS `transportadores` (
   `criado_em` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `fretes`
+--
+ALTER TABLE `fretes`
+  ADD CONSTRAINT `fretes_ibfk_1` FOREIGN KEY (`transportador_id`) REFERENCES `transportadores` (`id`),
+  ADD CONSTRAINT `fretes_ibfk_2` FOREIGN KEY (`origem_id`) REFERENCES `enderecos` (`id`),
+  ADD CONSTRAINT `fretes_ibfk_3` FOREIGN KEY (`destino_id`) REFERENCES `enderecos` (`id`);
+
+--
+-- Restrições para tabelas `frete_produtos`
+--
+ALTER TABLE `frete_produtos`
+  ADD CONSTRAINT `frete_produtos_ibfk_1` FOREIGN KEY (`frete_id`) REFERENCES `fretes` (`id`),
+  ADD CONSTRAINT `frete_produtos_ibfk_2` FOREIGN KEY (`produto_id`) REFERENCES `produtos` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

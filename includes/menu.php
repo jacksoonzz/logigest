@@ -31,7 +31,12 @@ $paginaAtual = basename($_SERVER['SCRIPT_NAME']);
         class="<?= $paginaAtual === 'transportadores.php' ? 'ativo' : '' ?>">
             Transportadores
         </a>
-        <span>Fretes</span>
+        
+        <a href="fretes.php"
+        class="<?= $paginaAtual === 'fretes.php' ? 'ativo' : '' ?>">
+            Fretes
+        </a>
+
         <span>Relatórios</span>
     </nav>
 </aside>
